@@ -1,0 +1,49 @@
+library(tidyverse)
+
+#Normal Baja Kurtosis and Skewness
+norm_dist <- rnorm(1000, mean = 0, sd = 1)
+
+ggplot(data.frame(x = norm_dist)) + 
+  geom_qq(aes(sample = x)) + 
+  geom_histogram(aes(x), binwidth = 0.5, right = TRUE, fill = "blue", alpha = 0.5) + 
+  theme_classic()
+
+#Log-Normal Distribution Alta Kurtosis and Skewness
+lognorm_dist <- rlnorm(1000, meanlog = 0, sdlog = 1)
+
+ggplot(data.frame(x = lognorm_dist)) + 
+  geom_qq(aes(sample = x)) + 
+  geom_histogram(aes(x), binwidth = 0.5, right = TRUE, fill = "blue", alpha = 0.5) + 
+  theme_classic()
+
+# Example 3: Student's t Distribution (High Kurtosis and Low Skewness)
+t_dist <- rt(1000, df = 5)
+
+ggplot(data.frame(x = t_dist)) + 
+  geom_qq(aes(sample = x)) + 
+  geom_histogram(aes(x), binwidth = 0.5, right = TRUE, fill = "blue", alpha = 0.5) + 
+  theme_classic()
+
+# Example 4: Cauchy Distribution (High Kurtosis and Skewness)
+cauchy_dist <- rcauchy(1000, location = 0, scale = 1)
+
+ggplot(data.frame(x = cauchy_dist)) + 
+  geom_qq(aes(sample = x)) + 
+  geom_histogram(aes(x), binwidth = 0.5, right = TRUE, fill = "blue", alpha = 0.5) + 
+  theme_classic()
+
+# Example 5: Exponential Distribution (Low Kurtosis and Skewness)
+exp_dist <- rexp(1000, rate = 1)
+
+ggplot(data.frame(x = exp_dist)) + 
+  geom_qq(aes(sample = x)) + 
+  geom_histogram(aes(x), binwidth = 0.5, right = TRUE, fill = "blue", alpha = 0.5) + 
+  theme_classic()
+
+# Example 6: Skewed Exponential Distribution (High Kurtosis and Skewness)
+skew_exp_dist <- rsexp(1000, location = 0, shape = 1)
+
+ggplot(data.frame(x = skew_exp_dist)) + 
+  geom_qq(aes(sample = x)) + 
+  geom_histogram(aes(x), binwidth = 0.5, right = TRUE, fill = "blue", alpha = 0.5) + 
+  theme_classic()
